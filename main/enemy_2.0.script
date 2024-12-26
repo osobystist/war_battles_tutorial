@@ -1,0 +1,57 @@
+go.property('max_tanks', 5)
+go.property('spawn_tank', 2) --Кількість додаткових танків після знищення
+go.property('current_tanks', 0) --Поточна кількість танків на карті
+
+
+function init(self)
+	self.total_created = 0 -- Загальна кількість створених танків
+	self.active_tanks = 0 -- Поточна кількість танків на карті
+	-- self.max_tanks = 25 -- Максимальна кількість танків для створення
+	self.spawn_extra = 3 -- Скільки танків створювати при знищенні
+	self.new_spawn = true -- Прапорець для перевірки спавна
+	math.randomseed(os.clock()*100000000000)
+	math.random()
+	math.random()
+	math.random()
+end
+
+function final(self)
+end
+
+local function spawn_tanks(self)
+	local x = math.random(0, 690)
+	local y = math.random(0, 690)
+	local pos = vmath.vector3(x, y, 0)
+
+	factory.create('#enemy_factory', pos, vmath.quat(), { ["shoot_interval"] = 3 })
+	self.total_created = self.total_created + 1
+	self.active_tanks = self.active_tanks + 1
+	--print('tank_spawn')
+end
+
+function update(self, dt)
+	if self.new_spawn and self.total_created < self.max_tanks then
+		
+		for i = 1, self.spawn_extra do
+			if self.total_created < self.max_tanks then
+				spawn_tanks(self)
+			end
+		end
+		self.new_spawn = false
+	end
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash('tank_destroyed') then
+		self.active_tanks = self.active_tanks - 1
+		if self.active_tanks <= 1 then
+			self.new_spawn = true
+		end
+	end
+	print('active_tanks = ', self.active_tanks)
+	if self.active_tanks == 0 then
+		msg.post("main:/gui#ui", 'level_completed')
+	end
+end
+

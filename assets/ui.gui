@@ -1,0 +1,182 @@
+script: "/assets/ui.gui_script"
+fonts {
+  name: "text"
+  font: "/assets/text.font"
+}
+nodes {
+  position {
+    x: 18.0
+    y: 710.0
+  }
+  scale {
+    x: 1.696026
+    y: 1.608285
+    z: 1.416
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "SCORE 0 "
+  font: "text"
+  id: "score"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1200.0
+    y: 422.0
+  }
+  scale {
+    x: 4.431164
+    y: 3.652351
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "winner"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  scale {
+    z: 0.76
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "YOU HAVE WON!"
+  font: "text"
+  id: "winner_text"
+  parent: "winner"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 2138.0
+    y: 429.0
+  }
+  scale {
+    x: 4.431164
+    y: 3.652351
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "game_over"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -1.57972
+    y: 0.821389
+  }
+  scale {
+    x: 1.023335
+    y: 1.054768
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "G_O"
+  parent: "game_over"
+  inherit_alpha: true
+  clipping_inverted: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -0.677023
+    y: 24.367867
+  }
+  scale {
+    z: 0.76
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "GAME OVER  :("
+  font: "text"
+  id: "game_over_text"
+  parent: "G_O"
+}
+nodes {
+  position {
+    x: -51.679424
+    y: -17.249165
+  }
+  scale {
+    x: 0.468063
+    y: 0.523743
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "restart"
+  parent: "game_over"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "NEW GAME"
+  font: "text"
+  id: "restart_text"
+  parent: "restart"
+}
+nodes {
+  position {
+    x: 49.197006
+    y: -16.427776
+  }
+  scale {
+    x: 0.278732
+    y: 0.511747
+    z: 1.208
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "exit"
+  parent: "game_over"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 2.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "EXIT"
+  font: "text"
+  id: "exit_text"
+  parent: "exit"
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

@@ -1,0 +1,89 @@
+go.property("shoot_interval", 2)
+
+function init(self)
+	self.shoot_timer = 0
+		
+	self.dir = vmath.vector3()
+	self.speed = 25
+	
+	self.target = vmath.vector3(125, 250, 0)
+	self.reached = false
+
+	self.current_anim = nil
+
+	self.shoot = false
+end
+
+function final(self)
+
+end
+
+function update(self, dt)
+	if self.reached then
+		local x_targ = math.random(20, 680)
+		local y_targ = math.random(20, 680)
+		self.target = vmath.vector3(x_targ, y_targ, 0)
+		--print(self.target)
+		self.reached = false
+	end
+		
+	local pos = go.get_position()
+	self.dir = self.target - pos
+	
+	if vmath.length(self.dir) < 1 then
+		self.reached = true
+	end
+	
+	self.dir = vmath.normalize(self.dir)
+	--print(self.dir)
+	local new_pos = pos + self.dir * self.speed * dt
+	go.set_position(new_pos) 
+
+	local anim = nil
+	
+	if self.dir.x > 0 and self.dir.y > 0.15 then
+		anim = hash("tank_up_right")   -- Рух вгору-вправо
+		--print(self.dir)
+	elseif self.dir.x > 0.15 and self.dir.y < 0 then
+		anim = hash("tank_down_right") -- Рух вниз-вправо
+		--print(self.dir)
+	elseif self.dir.x < -0.24 and self.dir.y > 0.01 then
+		anim = hash("tank_up_left")    -- Рух вгору-вліво
+		--print(self.dir)
+	elseif self.dir.x < -0.19 and self.dir.y < -0.06 then
+		anim = hash("tank_down_left")
+		--print(self.dir)
+	elseif self.dir.x > 0.15 then                                     -- [2]
+		anim = hash("tank_right")
+	elseif self.dir.x < -0.19 then
+		anim = hash("tank_left")
+	elseif self.dir.y > 0 then
+		anim = hash("tank_up")
+	elseif self.dir.y < 0 then
+		anim = hash("tank_down")
+	end
+
+	if anim ~= self.current_anim then                          -- [3]
+		msg.post("#sprite", "play_animation", { id = anim })   -- [4]
+		self.current_anim = anim                               -- [5]
+	end
+
+	self.shoot_timer = self.shoot_timer + dt
+	if self.shoot_timer >= self.shoot_interval then
+		self.shoot = true
+		-- print('shoot = true')
+	end
+	
+	if self.shoot then
+		local angle = math.atan2(self.dir.y, self.dir.x)
+		local rot = vmath.quat_rotation_z(angle)
+		local props = { dir = self.dir }
+		factory.create('main:/enemy#enemy_rocket_factory', nil, rot, props)
+		-- print('SHOOT!!!!')
+		self.shoot = false
+		self.shoot_timer = 0
+	end
+	
+end
+
+
