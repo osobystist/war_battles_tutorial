@@ -1,0 +1,228 @@
+animations {
+  id: "down"
+  images {
+    image: "/assets/units/infantry/down/1.png"
+  }
+  images {
+    image: "/assets/units/infantry/down/2.png"
+  }
+  images {
+    image: "/assets/units/infantry/down/3.png"
+  }
+  images {
+    image: "/assets/units/infantry/down/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "up"
+  images {
+    image: "/assets/units/infantry/up-d/1.png"
+  }
+  images {
+    image: "/assets/units/infantry/up-d/2.png"
+  }
+  images {
+    image: "/assets/units/infantry/up-d/3.png"
+  }
+  images {
+    image: "/assets/units/infantry/up-d/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "left"
+  images {
+    image: "/assets/units/infantry/side/1.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/2.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/3.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+  flip_horizontal: 1
+}
+animations {
+  id: "right"
+  images {
+    image: "/assets/units/infantry/side/1.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/2.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/3.png"
+  }
+  images {
+    image: "/assets/units/infantry/side/4.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 8
+}
+animations {
+  id: "rocket"
+  images {
+    image: "/assets/buildings/turret-rocket/1.png"
+  }
+  images {
+    image: "/assets/buildings/turret-rocket/2.png"
+  }
+  images {
+    image: "/assets/buildings/turret-rocket/3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 9
+  flip_horizontal: 1
+}
+animations {
+  id: "explosion"
+  images {
+    image: "/assets/fx/explosion/1.png"
+  }
+  images {
+    image: "/assets/fx/explosion/2.png"
+  }
+  images {
+    image: "/assets/fx/explosion/3.png"
+  }
+  images {
+    image: "/assets/fx/explosion/4.png"
+  }
+  images {
+    image: "/assets/fx/explosion/5.png"
+  }
+  images {
+    image: "/assets/fx/explosion/6.png"
+  }
+  images {
+    image: "/assets/fx/explosion/7.png"
+  }
+  images {
+    image: "/assets/fx/explosion/8.png"
+  }
+  images {
+    image: "/assets/fx/explosion/9.png"
+  }
+  fps: 8
+}
+animations {
+  id: "tank_down"
+  images {
+    image: "/assets/units/tank/down/1.png"
+  }
+  images {
+    image: "/assets/units/tank/down/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+}
+animations {
+  id: "idle"
+  images {
+    image: "/assets/units/infantry/down/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 1
+}
+animations {
+  id: "tank_left"
+  images {
+    image: "/assets/units/tank/side/1.png"
+  }
+  images {
+    image: "/assets/units/tank/side/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 1
+}
+animations {
+  id: "tank_up"
+  images {
+    image: "/assets/units/tank/up/1.png"
+  }
+  images {
+    image: "/assets/units/tank/up/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+}
+animations {
+  id: "tank_right"
+  images {
+    image: "/assets/units/tank/side/1.png"
+  }
+  images {
+    image: "/assets/units/tank/side/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+}
+animations {
+  id: "tank_down_right"
+  images {
+    image: "/assets/units/tank/down-d/1.png"
+  }
+  images {
+    image: "/assets/units/tank/down-d/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+}
+animations {
+  id: "tank_down_left"
+  images {
+    image: "/assets/units/tank/down-d/1.png"
+  }
+  images {
+    image: "/assets/units/tank/down-d/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 1
+}
+animations {
+  id: "tank_up_right"
+  images {
+    image: "/assets/units/tank/up-d/1.png"
+  }
+  images {
+    image: "/assets/units/tank/up-d/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+}
+animations {
+  id: "tank_up_left"
+  images {
+    image: "/assets/units/tank/up-d/1.png"
+  }
+  images {
+    image: "/assets/units/tank/up-d/2.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+  fps: 5
+  flip_horizontal: 1
+}
+animations {
+  id: "enemy_rocket"
+  images {
+    image: "/assets/buildings/turret-rocket/1.png"
+  }
+  images {
+    image: "/assets/buildings/turret-rocket/2.png"
+  }
+  images {
+    image: "/assets/buildings/turret-rocket/3.png"
+  }
+  playback: PLAYBACK_LOOP_FORWARD
+}
+extrude_borders: 2

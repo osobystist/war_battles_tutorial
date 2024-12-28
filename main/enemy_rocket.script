@@ -1,0 +1,42 @@
+go.property('dir', vmath.vector3())
+
+function init(self)
+	self.speed = 300
+	self.life = 1
+end
+
+local function explode(self)                                -- [1]
+	go.set_rotation(vmath.quat())
+	self.speed = 0
+	sprite.play_flipbook("#sprite", "explosion")       
+end
+
+function update(self, dt)
+	local pos = go.get_position()
+	pos = pos + self.dir * self.speed * dt
+	go.set_position(pos)
+
+	if pos.x >= 740 or pos.y >= 740 or pos.x <= 0 or pos.y <= 0 then
+		go.delete()
+	end
+	
+	self.life = self.life - dt
+	if self.life < 0 then                                   -- [2]
+		self.life = 1000
+	end
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then    -- [3]
+		explode(self)                                       -- [4]
+		-- go.delete(message.other_id)                         -- [5]
+		go.set_position(vmath.vector3(10000, 10000, 0), message.other_id)
+		-- msg.post(message.other_id, "disable")
+		msg.post("main:/gui#ui", 'game_over')
+	end
+	
+	if message_id == hash("animation_done") then            -- [2]
+		go.delete()                                         -- [3]
+	end
+end
